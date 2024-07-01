@@ -1,8 +1,8 @@
 "use client";
 // app/components/SubscriptionPlanList.tsx
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { PlanObject, PlanOverridesObject } from "lago-javascript-client";
+import { useRouter } from "next/router";
 
 interface SubscriptionInputObj {
   external_customer_id: string;
@@ -57,8 +57,9 @@ export default function SubscriptionPlanList({
 }) {
   const [selectedPlans, setSelectedPlans] = useState<PlanObject[]>([]);
   const [customerPlans, setCustomerPlans] = useState<PlanObject[]>([]);
-  const params = useSearchParams();
-  const customerExternalId = params?.get("customerExternalId");
+  const router = useRouter();
+  const { query } = router;
+  const customerExternalId = query.customerExternalId as string;
 
   useEffect(() => {
     (async () => {
