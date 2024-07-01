@@ -2,7 +2,7 @@
 // app/components/SubscriptionPlanList.tsx
 import { useEffect, useState } from "react";
 import { PlanObject, PlanOverridesObject } from "lago-javascript-client";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface SubscriptionInputObj {
   external_customer_id: string;
